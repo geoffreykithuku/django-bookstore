@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{%  block content %}
+
+
+<div class="container mt-4">
+    <div class="card" style="width:400px">
+
+  <div class="card-body">
+    <h4 class="card-title">Title: {{ course.title }}</h4>
+    <p class="card-text">Price: {{ course.price }}</p>
+          <p class="card-text">Students: {{ course.student_qty}}</p>
+          <p class="card-text">Reviews: {{ course.review_qty }}</p>
+    <button class="btn btn-primary">Buy</button>
+  </div>
+</div>
+</div>
+{% endblock %}
+{% block title %}
+{{ course.title }}
+{% endblock %}
