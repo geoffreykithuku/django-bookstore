@@ -1,6 +1,9 @@
 from tastypie.resources import ModelResource
 
+from tastypie.authorization import Authorization
 from shop.models import Category, Course
+
+from .authentication import CustomApiKeyAuthentication
 
 
 # Create your models here.
@@ -16,4 +19,9 @@ class CourseResource(ModelResource):
         queryset = Course.objects.all()
         resource_name = 'courses'
         allowed_methods = ['get', 'delete', 'post']
-        
+        authentication = CustomApiKeyAuthentication()
+        authorization = Authorization()
+
+    def hydrate(self, bundle):
+        bundle.obj.category_id = bundle.obj.category_id = bundle.data['category_id']
+        return bundle
